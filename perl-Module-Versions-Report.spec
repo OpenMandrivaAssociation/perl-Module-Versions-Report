@@ -2,7 +2,7 @@
 
 Name:		perl-%{realname}
 Version:        1.02
-Release:        %mkrel 3
+Release:        %mkrel 4
 License:	GPL or Artistic
 Group:		Development/Perl
 Summary:        Perl module to report versions of all modules in memory
