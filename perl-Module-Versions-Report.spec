@@ -1,8 +1,8 @@
 %define realname   Module-Versions-Report
 
 Name:		perl-%{realname}
-Version:        1.02
-Release:        %mkrel 4
+Version:        1.03
+Release:        %mkrel 1
 License:	GPL or Artistic
 Group:		Development/Perl
 Summary:        Perl module to report versions of all modules in memory
