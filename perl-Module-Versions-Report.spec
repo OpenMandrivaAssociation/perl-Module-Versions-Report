@@ -8,6 +8,7 @@ Group:		Development/Perl
 Summary:        Perl module to report versions of all modules in memory
 Source0:        ftp://ftp.perl.org/pub/CPAN/modules/by-module/Module/%{realname}-%{version}.tar.bz2
 Url:		http://search.cpan.org/dist/%{realname}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	perl-devel
 BuildArch:      noarch
 
