@@ -1,7 +1,7 @@
 %define realname   Module-Versions-Report
 
 Name:		perl-%{realname}
-Version:        1.05
+Version:        1.06
 Release:        %mkrel 1
 License:	GPL or Artistic
 Group:		Development/Perl
