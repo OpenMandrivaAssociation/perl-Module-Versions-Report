@@ -1,18 +1,18 @@
 %define upstream_name    Module-Versions-Report
 %define upstream_version 1.06
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
-Summary:    Perl module to report versions of all modules in memory
+Summary:	Perl module to report versions of all modules in memory
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:    ftp://ftp.perl.org/pub/CPAN/modules/by-module/Module/%{upstream_name}-%{upstream_version}.tar.bz2
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Module/%{upstream_name}-%{upstream_version}.tar.bz2
 
-BuildArch:  noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildArch:	noarch
 
 %description
 Perl module to report versions of all modules in memory.
@@ -26,22 +26,62 @@ defined a $VERSION, at least).
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-rm -rf $RPM_BUILD_ROOT/%{perl_vendorarch}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}%{perl_vendorarch}
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog README
 %{perl_vendorlib}/*
 %{_mandir}/man3/*
+
+
+%changelog
+* Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 1.60.0-1mdv2010.0
++ Revision: 406171
+- rebuild using %%perl_convert_version
+
+* Thu Oct 23 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
++ Revision: 296795
+- update to new version 1.06
+
+* Mon Jun 16 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.05-1mdv2009.0
++ Revision: 220144
+- update to new version 1.05
+
+* Sat Jun 07 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.04-1mdv2009.0
++ Revision: 216585
+- update to new version 1.04
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 1.03-1mdv2008.1
++ Revision: 136291
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Mon May 21 2007 Michael Scherer <misc@mandriva.org> 1.03-1mdv2008.0
++ Revision: 29061
+- Update to new version 1.03
+
+* Tue May 08 2007 Olivier Thauvin <nanardon@mandriva.org> 1.02-4mdv2008.0
++ Revision: 25297
+- rebuild
+
+
+* Wed May 03 2006 Nicolas Lécureuil <neoclust@mandriva.org> 1.02-3mdk
+- Fix According to perl Policy
+	- Source URL
+
+* Wed Dec 28 2005 Michael Scherer <misc@mandriva.org> 1.02-2mdk
+- Do not ship empty dir
+
+* Sat Oct 01 2005 Michael Scherer <misc@mandriva.org> 1.02-1mdk
+- First mandriva package
+
