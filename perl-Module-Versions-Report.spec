@@ -1,15 +1,13 @@
 %define upstream_name    Module-Versions-Report
-%define upstream_version 1.06
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	5
+Version:	1.06
+Release:	6
 
 Summary:	Perl module to report versions of all modules in memory
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Module-Versions-Report
-Source0:	https://cpan.metacpan.org/authors/id/J/JE/JESSE/Module-Versions-Report-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/J/JE/JESSE/Module-Versions-Report-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -24,7 +22,7 @@ modules in memory, and noting the version of each (for modules that
 defined a $VERSION, at least).
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -46,9 +44,7 @@ rm -rf %{buildroot}%{perl_vendorarch}
 %changelog
 * Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 1.60.0-1mdv2010.0
 + Revision: 406171
-- rebuild using %%perl_convert_version
-
-* Thu Oct 23 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
+- rebuild using %1.06 Thu Oct 23 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
 + Revision: 296795
 - update to new version 1.06
 
